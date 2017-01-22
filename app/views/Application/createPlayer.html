@@ -1,0 +1,46 @@
+#{extends 'main.html' /}
+#{set title:'Add a new player' /}
+
+<h1>Add a new player</h1>
+
+<form action="createPlayer" method="post">
+	<input type="hidden" name="clubId" value="${clubId}">
+	
+	<div  style="left">
+		
+		<div>
+			<input type="text" name="playerName" value="${flash.playerName}" placeholder="Player's name"/>
+			<span style="color:red">#{error 'playerName' /}</span>
+		</div>
+		<div>
+			<input type="text" name="licenseNumber" value="${flash.licenseNumber}" placeholder="License number"/>
+			<span style="color:red">#{error 'licenseNumber' /}</span>
+		</div>
+		<div>
+			<input type="text" name="salary" value="${flash.salary}" placeholder="Salary"/>
+			<span style="color:red">#{error 'salary' /}</span>
+		</div>
+		<div>
+			<input type="text" name="started" value="${flash.started}" placeholder="Started"/>
+			<span style="color:red">#{error 'started' /}</span>
+		</div>
+		<div>
+			<input type="text" name="endOfContract" value="${flash.endOfContract}" placeholder="End of contract"/>
+			<span style="color:red">#{error 'endOfContract' /}</span>
+		</div>
+		<select name="post">
+		#{list items:posts, as:'post'}
+			<option value="${post}" #{if flash.post == post} selected="selected" #{/if}>
+				${post}
+			</option>
+		#{/list}
+	</select>
+		
+		<div>
+  		    <input type="submit" value="Add the player to the club" /> 
+  		</div>
+	</div>
+	<div class="help-tip">
+	<p>All data is required. The salary need to be over 149999. The started and the end of contract format is yyyy-MM-dd.</p>
+	</div>
+</form>

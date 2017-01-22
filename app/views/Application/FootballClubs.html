@@ -1,0 +1,27 @@
+#{extends 'main.html' /}
+#{set title:'Football Clubs' /}
+
+<h2><a href="createClub">Add new football club</a></h2>
+
+<table align="center">
+	
+	<tr>
+		<th>Football clubs</th>
+		<th>City</th>
+		<th>Number of players</th>
+		<th>Total wage cost</th>
+	</tr>
+	
+	#{list items:clubs, as:'club'}
+	<tr>
+		<th>${club.clubName}</th>
+		<th>${club.city}</th>
+		<th>${club.getPlayers()}</th>
+		<th>${club.getSumSalary()}</th>
+		
+		<th><a href="clubDetails?clubId=${club.clubId}">View club details</a> </th>
+		<th><a href="deleteClub?clubId=${club.clubId}">Delete the club</a> </th>
+	</tr>	
+#{/list}
+	
+</table>

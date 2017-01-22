@@ -1,0 +1,37 @@
+#{extends 'main.html' /}
+#{set title:'Add a new club' /}
+
+<h1>Add a new club</h1>
+
+<form action="createClub" method="post">
+	<div  align="left">
+	<input type="hidden" name="clubId" value="${clubId}">
+		<div>
+			<input type="text" name="clubName" value="${flash.clubName}" placeholder="Club's name"/>
+			<span style="color:red">#{error 'clubName' /}</span>
+		</div>
+		<div>
+			<input type="text" name="foundationYear" value="${flash.foundationYear}" placeholder="Foundation year"/>
+			<span style="color:red">#{error 'foundationYear' /}</span>
+		</div>
+		<div>
+			<input type="text" name="country" value="${flash.country}" placeholder="Country"/>
+			<span style="color:red">#{error 'country' /}</span>
+		</div>
+		<div>
+			<input type="text" name="county" value="${flash.county}" placeholder="County"/>
+			<span style="color:red">#{error 'county' /}</span>
+		</div>
+		<div>
+			<input type="text" name="city" value="${flash.city}" placeholder="City"/>
+			<span style="color:red">#{error 'city' /}</span>
+		</div>
+		
+		<div>
+  		    <input type="submit" value="Add the club" /> 
+  		</div>
+	</div>
+	<div class="help-tip">
+	<p>All data is required. The foundation year have to be between 1862 and current year.</p>
+	</div>
+</form>

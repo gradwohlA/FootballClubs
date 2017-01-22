@@ -1,0 +1,60 @@
+#{extends 'main.html' /}
+#{set title:' details' /}
+
+<h2><a href="createPlayer?clubId=${club.clubId}">Add a new player</a></h2>
+
+
+<h1>${club.clubName}</h1>
+
+
+
+<table align="center">
+	
+	<tr>
+		<th>Foundation year</th>
+		<th>Home country</th>
+		<th>Home county</th>
+		<th>Home city</th>
+	</tr>
+	
+	#{list items:club, as:'club'}
+	<tr>
+		<th>${club.foundationYear}</th>
+		<th>${club.country}</th>
+		<th>${club.county}</th>
+		<th>${club.city}</th>
+		
+	</tr>	
+	#{/list}
+</table>
+
+<br>
+<h2>Players in the team</h2>
+<table align="center">
+	<tr>
+		<th>Player name</th>
+		<th>License number</th>
+		<th>Salary</th>
+		<th>Started</th>
+		<th>End of contract</th>
+		<th>Post</th>
+	</tr>
+	
+	#{list items:list, as:'player'}
+	<tr>
+		<th>${player.playerName}</th>
+		<th>${player.licenseNumber}</th>
+		<th>${player.salary}</th>
+		<th>${player.started}</th>
+		<th>${player.endOfContract}</th>
+		<th>${player.post}</th>
+		<th><a href="deletePlayer?playerId=${player.playerId}">Delete the player</a>
+	</tr>	
+#{/list}
+</table>
+<h2>Missing post(s):</h2>
+#{list items:errorList, as:'error'}
+<p><font color=red>There is no ${error} in this team</font></p>
+#{/list}
+<br>
+<a href="FootballClubs">Back to clubs</a>
